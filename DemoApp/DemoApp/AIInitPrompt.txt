@@ -1,0 +1,99 @@
+Kódolási konvenciók – AI számára összegzés, eltérni csak kivételes esetben esetleg kérésre lehet ettől ebben a beszélgetésben.
+Elnevezési szabályok
+Osztályok, rekordok, structok, enumok, konstansok, metódusok, property-k: PascalCase.
+Interface-ek: PascalCase + „I” prefix (pl. INamingExampleService).
+Privát és internal változók: camelCase, „_” prefix (pl. _nameExample).
+Paraméterek, lokális változók: camelCase.
+Nevek legyenek érthetőek, kiejthetőek, üzleti logikához igazodók, következetesek, jól kereshetőek.
+Kerülendő: egybetűs változók (kivéve ciklus), rövidítések (csak ha egyértelmű), Hungarian notation, számok helyett kiírt szavak (pl. fourDigitZipCode), típusnév a névben (pl. nameString helyett name), kollekcióknál többes szám (pl. zipCodes).
+Property ne tartalmazza az osztály nevét.
+Exception osztályok: Exception postfix.
+Kerülendő általános nevek (pl. result, data), legyen pontosabb.
+Metódusok: ige, írja le a funkciót, lehet hosszabb, de ne túl hosszú.
+Események: On, Before, After prefix/postfix.
+Osztály: főnév vagy főnévi kifejezés.
+Boolean: is, has, should prefix, pozitív jelentés (pl. isActive).
+Számok: numberOf, count, amountOf prefix.
+Mértékegység: pl. delayInSeconds.
+Stringként tárolt szám: AsString postfix.
+Dátumok: legyen egyértelmű, pl. expiresOn, startedAt, validFor.
+Kommentek
+Publikus metódusoknál javasolt XML komment, főleg infrastruktúra kódnál.
+Komment ne a működést, hanem a szándékot írja le.
+Karbantarthatóság
+„var” csak egyértelmű típusnál.
+Magic number helyett konstans.
+Enum első elemét explicit 1-re állítsd.
+Interface-t használj típus helyett, ahol lehet.
+Kollekciókat mindig inicializáld, null helyett üres kollekciót adj vissza.
+String összefűzés: rövidnél interpoláció, hosszúnál StringBuilder.
+Dátum: DateTimeOffset-et használj DateTime helyett.
+Aktuális idő: dateService-t használj.
+Kód formázás
+Behúzás: egységesen tab vagy 4 szóköz.
+Kapcsos zárójelek mindig új sorban.
+if/else mindig kapcsos zárójelekkel.
+Metódusláncolás: egységes kezdés, behúzás.
+Az alkalmazás használja a stylecop-ot. A warning errorként kezelt. Az alap beállításhoz képest ezek a beállításink:
+[*.cs]
+# S1066: Mergeable "if" statements should be combined
+dotnet_diagnostic.S1066.severity = suggestion
+# S1125: Boolean literals should not be redundant
+dotnet_diagnostic.S1125.severity = suggestion
+csharp_indent_labels = no_change
+csharp_using_directive_placement = outside_namespace:silent
+csharp_prefer_simple_using_statement = true:suggestion
+csharp_prefer_braces = true:silent
+csharp_style_namespace_declarations = block_scoped:silent
+csharp_style_prefer_method_group_conversion = true:silent
+csharp_style_prefer_top_level_statements = true:silent
+csharp_style_prefer_primary_constructors = true:suggestion
+csharp_prefer_system_threading_lock = true:suggestion
+csharp_style_expression_bodied_methods = false:silent
+csharp_style_expression_bodied_constructors = false:silent
+csharp_style_expression_bodied_operators = false:silent
+csharp_style_expression_bodied_properties = true:silent
+csharp_style_expression_bodied_indexers = true:silent
+csharp_style_expression_bodied_accessors = true:silent
+csharp_style_expression_bodied_lambdas = true:silent
+csharp_style_expression_bodied_local_functions = false:silent
+[*.{cs,vb}]
+#### Naming styles ####
+# Naming rules
+dotnet_naming_rule.interface_should_be_begins_with_i.severity = suggestion
+dotnet_naming_rule.interface_should_be_begins_with_i.symbols = interface
+dotnet_naming_rule.interface_should_be_begins_with_i.style = begins_with_i
+dotnet_naming_rule.types_should_be_pascal_case.severity = suggestion
+dotnet_naming_rule.types_should_be_pascal_case.symbols = types
+dotnet_naming_rule.types_should_be_pascal_case.style = pascal_case
+dotnet_naming_rule.non_field_members_should_be_pascal_case.severity = suggestion
+dotnet_naming_rule.non_field_members_should_be_pascal_case.symbols = non_field_members
+dotnet_naming_rule.non_field_members_should_be_pascal_case.style = pascal_case
+# Symbol specifications
+dotnet_naming_symbols.interface.applicable_kinds = interface
+dotnet_naming_symbols.interface.applicable_accessibilities = public, internal, private, protected, protected_internal, private_protected
+dotnet_naming_symbols.interface.required_modifiers = 
+dotnet_naming_symbols.types.applicable_kinds = class, struct, interface, enum
+dotnet_naming_symbols.types.applicable_accessibilities = public, internal, private, protected, protected_internal, private_protected
+dotnet_naming_symbols.types.required_modifiers = 
+dotnet_naming_symbols.non_field_members.applicable_kinds = property, event, method
+dotnet_naming_symbols.non_field_members.applicable_accessibilities = public, internal, private, protected, protected_internal, private_protected
+dotnet_naming_symbols.non_field_members.required_modifiers = 
+# Naming styles
+dotnet_naming_style.begins_with_i.required_prefix = I
+dotnet_naming_style.begins_with_i.required_suffix = 
+dotnet_naming_style.begins_with_i.word_separator = 
+dotnet_naming_style.begins_with_i.capitalization = pascal_case
+dotnet_naming_style.pascal_case.required_prefix = 
+dotnet_naming_style.pascal_case.required_suffix = 
+dotnet_naming_style.pascal_case.word_separator = 
+dotnet_naming_style.pascal_case.capitalization = pascal_case
+dotnet_naming_style.pascal_case.required_prefix = 
+dotnet_naming_style.pascal_case.required_suffix = 
+dotnet_naming_style.pascal_case.word_separator = 
+dotnet_naming_style.pascal_case.capitalization = pascal_case
+dotnet_style_operator_placement_when_wrapping = beginning_of_line
+tab_width = 4
+indent_size = 4
+end_of_line = crlf
+ 
